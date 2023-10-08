@@ -38,5 +38,5 @@ type User {
     name: String!
     email: String!
     email_verified_at: DateTime
-    posts: Post! @hasMany
+    posts: [Post!]! @hasMany
 }
