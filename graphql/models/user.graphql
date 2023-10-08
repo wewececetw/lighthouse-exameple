@@ -39,7 +39,7 @@ extend type Mutation{
 }
 
 type User {
-    id: ID!
+    userId: ID! @rename(attribute: "id")
     name: String!
     email: String!
     email_verified_at: DateTime
