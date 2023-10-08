@@ -2,8 +2,22 @@
 extend type Query {
     postBypage: [Post!]! @paginate
     posts: [Post!]! @all
-    post(id:ID! @eq): Post! @find
+    post(id:ID! @eq
+    ): Post! @find
 }
+
+extend type Mutation{
+   updatePostByAuthor(
+    postId: ID! @rename(attribute: "id")
+    # userId: Int! @rename(attribute: "userId")
+    title: String!
+    content: String!
+    ): Post! 
+    @field(resolver: "App\\GraphQL\\Mutations\\UpdatePost@update") 
+    @guard
+}
+
+
 
 type Post{
     postId: ID! @rename(attribute: "id")
@@ -11,3 +25,4 @@ type Post{
     content: String!  
     author: User @belongsTo(relation: "user")
 }
+

@@ -17,7 +17,7 @@ final class Logout
          */
         $user = Auth::user();
         
-        $accessToken = $user->currentAccessToken();
+        $accessToken = $user->tokens();
 
         if ($accessToken) {
             $accessToken = $accessToken->delete();
