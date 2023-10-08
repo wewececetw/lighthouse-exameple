@@ -1,9 +1,19 @@
-type Query {
+extend  type Query {
     users: [User!]! @all
-    user(id:ID! @eq): User @find
-    usersBypage: [User!]! @paginate(model: "App\\Models\\User")
+    user(id:ID! @eq): User! @find
+    usersBypage: [User!]! @paginate
 }
+# @all 指令通常用於返回多個結果，它將應用在 Eloquent 查詢中，以檢索所有符合條件的結果。
+# @find 指令通常用於查找特定的單個結果，它將應用在 Eloquent 查詢中，以檢索與指定條件匹配的單個結果
 # @eq =  where('id', '=', 1)
+
+extend type Mutation{
+     createUser(
+        name: String!
+        email: String! @rules(apply: ["email", "unique:users"])
+        password: String! @rules(apply: ["min:8"])
+    ): User! @create
+}
 
 type User {
     id: ID!
