@@ -2,7 +2,6 @@ extend  type Query {
     users: [User!]! @all
     user(id:ID! @eq): User! @find
     usersBypage: [User!]! @paginate
-    # posts: [Post!]! @paginate
 }
 # @all 指令通常用於返回多個結果，它將應用在 Eloquent 查詢中，以檢索所有符合條件的結果。
 # @find 指令通常用於查找特定的單個結果，它將應用在 Eloquent 查詢中，以檢索與指定條件匹配的單個結果
@@ -39,4 +38,5 @@ type User {
     name: String!
     email: String!
     email_verified_at: DateTime
+    posts: Post! @hasMany
 }
