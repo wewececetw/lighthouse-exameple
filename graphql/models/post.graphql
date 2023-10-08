@@ -1,10 +1,12 @@
 
 extend  type Query {
-    posts: [Post!]! @paginate
+    postBypage: [Post!]! @paginate
+    posts: [Post!]! @all
+    post(id:ID! @eq): Post! @find
 }
 
 type Post{
-    id: ID
+    id: ID!
     title: String!
     content: String!
     author: User @belongsTo(relation: "user")
