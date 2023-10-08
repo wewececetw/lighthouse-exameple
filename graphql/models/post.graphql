@@ -6,8 +6,8 @@ extend type Query {
 }
 
 type Post{
-    id: ID!
+    postId: ID! @rename(attribute: "id")
     title: String!
-    content: String!
+    content: String!  
     author: User @belongsTo(relation: "user")
 }
