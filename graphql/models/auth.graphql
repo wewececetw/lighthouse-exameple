@@ -11,10 +11,14 @@ type LogoutInput {
 }
 
 extend type Mutation {
-    login(email: String!, password: String!): loginInput
+    login(email: String!, password: String!, device: String!): loginInput
         @validator
 }
 
 extend type Mutation {
     logout: LogoutInput @guard
+}
+
+extend type Query {
+    me: User @auth @guard
 }

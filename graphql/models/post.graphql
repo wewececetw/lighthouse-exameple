@@ -1,5 +1,5 @@
 
-extend  type Query {
+extend type Query {
     postBypage: [Post!]! @paginate
     posts: [Post!]! @all
     post(id:ID! @eq): Post! @find

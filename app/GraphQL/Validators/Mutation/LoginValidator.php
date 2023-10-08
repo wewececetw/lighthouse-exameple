@@ -20,6 +20,7 @@ final class LoginValidator extends Validator
             ],
             'password' => [
                 'required',
+                'string',
                 'max:30',
                 // Password::min(6)
                 //     ->letters()
@@ -27,6 +28,10 @@ final class LoginValidator extends Validator
                 //     ->numbers()
                 //     ->uncompromised(),
             ],
+            'device' => [
+                'required',
+                'string'
+            ]
         ];
     }
 }

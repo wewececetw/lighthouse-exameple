@@ -24,14 +24,14 @@ final class Login
         /**
          * IF request data is valid to next proccess
          */
-        if (Auth::attempt($credentials)) {
+        if (Auth::guard('web')->attempt($credentials)) {
 
             /**
              * Check exiting email to next
              */
             $user = User::where('email', $args['email'])->first();
 
-            $token = $user->createToken('userLoginToken')->plainTextToken;
+            $token = $user->createToken($args['device'])->plainTextToken;
 
             return [
                 'status'  => 200,
