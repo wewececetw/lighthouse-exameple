@@ -18,8 +18,16 @@ class Post extends Model
 
     public function user() :BelongsTo
     {
-        return $this->belongsTo(User::class)
-        ->select(['users.id as userId']);
+        return $this->belongsTo(User::class, 'user_id')
+        ->select(['users.id as userId','users.*']);
+    }
+
+    public function getSubjectAttribute()
+    {
+        // 自訂義欄位
+        $user = $this->user;
+        $subject = $user->name . '修改了 標題->' . $this->title;
+        return $subject; // 返回自訂義的屬性值
     }
 
 }

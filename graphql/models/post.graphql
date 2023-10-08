@@ -23,6 +23,7 @@ type Post{
     postId: ID! @rename(attribute: "id")
     title: String!
     content: String!  
+    subject: String!
     author: User @belongsTo(relation: "user")
 }
 

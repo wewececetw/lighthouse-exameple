@@ -52,7 +52,7 @@ class User extends Authenticatable
 
     public function posts() :HasMany
     {
-        return $this->hasMany(Post::class);
+        return $this->hasMany(Post::class, 'user_id');
     }
 
 }
