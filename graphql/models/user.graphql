@@ -35,7 +35,7 @@ extend type Mutation{
     updateUserAvatar(
         image: Upload!
         id: ID!
-    ): User
+    ): UserResponse!
 }
 
 type User {
@@ -45,4 +45,10 @@ type User {
     email_verified_at: DateTime
     avatar: String
     posts: [Post!]! @hasMany
+}
+
+type UserResponse {
+    status: Boolean!
+    data: User
+    message: String!
 }

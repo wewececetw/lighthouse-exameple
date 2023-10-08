@@ -17,7 +17,7 @@ final class UpdatePost
         // TODO implement the resolver
     }
 
-    public function update($rootValue, array $args): Post
+    public function update($rootValue, array $args): Array
     {
         // 在这里执行你的自定义更新逻辑，例如验证和处理数据等
         // 你可以使用 Eloquent 模型的 find 方法来检索文章
@@ -25,7 +25,12 @@ final class UpdatePost
         $post = Post::find($postId);
 
         if (!$post) {
-            throw new \Exception("文章不存在");
+            return [
+                'status'  => false,
+                'data'      => NULL,
+                'message' => '文章不存在',
+            ];
+            // throw new \Exception("文章不存在");
         }
 
         // $userId = $args['userId'];
@@ -44,6 +49,11 @@ final class UpdatePost
         // 保存更新后的文章
         $post->save();
 
-        return $post;
+        // return $post;
+        return [
+            'status'  => true,
+            'data'      => $post,
+            'message' => 'success',
+        ];
     }
 }

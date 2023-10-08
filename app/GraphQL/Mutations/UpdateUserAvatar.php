@@ -18,6 +18,13 @@ final class UpdateUserAvatar
         $user = User::find($args['id']);
         $user->avatar = $path;
         $user->save();
-        return $user;
+        // return $user;
+
+        return [
+            'status'  => true,
+            'data'      => $user,
+            'message' => 'success',
+        ];
+        
     }
 }
