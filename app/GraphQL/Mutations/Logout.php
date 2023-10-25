@@ -15,28 +15,24 @@ final class Logout
         /**
          * Revoke user access token
          */
-        $user = Auth::user();
-        
-        $accessToken = $user->tokens();
+        $userCheck = Auth::guard('web')->check();
 
-        if ($accessToken) {
-            $accessToken = $accessToken->delete();
-        }
-
-
-        if($accessToken){
-            return [
-                'status'  => 200,
-                'message' => 'Logout has successfull',
-            ];
-        }
-        else
-        {
+        if (!$userCheck) {
             return [
                 'status'  => 401,
                 'message' => 'Token expired',
             ];
         }
+
+        Auth::guard('web')->logout();
+
+        
+        return [
+            'status'  => 200,
+            'message' => 'Logout has successfull',
+        ];
+        
+        
         
     }
 }
