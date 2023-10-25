@@ -23,10 +23,20 @@ final class Logout
             $accessToken = $accessToken->delete();
         }
 
-        return [
-            'status'  => 200,
-            'id'      => $accessToken,
-            'message' => 'Logout has successfull',
-        ];
+
+        if($accessToken){
+            return [
+                'status'  => 200,
+                'message' => 'Logout has successfull',
+            ];
+        }
+        else
+        {
+            return [
+                'status'  => 401,
+                'message' => 'Token expired',
+            ];
+        }
+        
     }
 }

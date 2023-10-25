@@ -6,7 +6,6 @@ type loginInput {
 
 type LogoutInput {
     status: Int!
-    id: Int!
     message: String
 }
 
