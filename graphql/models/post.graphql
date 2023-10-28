@@ -15,7 +15,7 @@ extend type Mutation{
     ): PostResponse!
     @field(resolver: "App\\GraphQL\\Mutations\\UpdatePost@update") 
     @guard
-    @validator
+    @validator(class: "Mutation\\UpdatePostByAuthorValidator")
 }
 
 type Post{

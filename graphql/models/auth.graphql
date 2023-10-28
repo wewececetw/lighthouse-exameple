@@ -11,7 +11,7 @@ type LogoutInput {
 
 extend type Mutation {
     login(email: String!, password: String!, device: String!): loginInput
-        @validator
+        @validator (class: "Mutation\\LoginValidator")
 }
 
 extend type Mutation {

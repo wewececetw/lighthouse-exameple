@@ -15,6 +15,11 @@ final class UpdatePostByAuthorValidator extends Validator
     {
         return [
             // TODO Add your validation rules
+            'postId' => [
+                'required',
+                'integer',
+                'size:20'
+            ],
             'title' => [
                 'required',
                 'string',
